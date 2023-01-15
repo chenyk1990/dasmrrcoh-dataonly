@@ -33,9 +33,9 @@ for ii=ieq:ieq
         data(find(isnan(data)))=0;
     end
     eq=data;
-    d_bp=yc_bandpass(eq',1/250,0,20)';
-    d_bpmf=yc_mf(d_bp,5,1,1);
-    %% LDRR
+    d_bp=das_bandpass(eq',1/250,0,20)';
+    d_bpmf=das_mf(d_bp,5,1,1);
+    %% MRR
     n1win=1024;n2win=800;n3win=1;
     n1win=512;n2win=200;n3win=1;
     r1=0.5;r2=0.5;r3=0.5;
