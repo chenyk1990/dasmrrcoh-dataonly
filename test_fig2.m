@@ -1,7 +1,7 @@
 % Script to plot Figure 2
 % BY Yangkang Chen
 % Jan, 2023
-% This script takes about 5-10 minutes
+% This script takes about 10 minutes
 %
 % Dependency MATdrr
 % svn co https://github.com/chenyk1990/MATdrr/trunk ./MATdrr
@@ -21,7 +21,6 @@ end
 
 names=dir('raw/*.mat');
 
-ieq=2;
 ieq=2;
 for ii=ieq:ieq
     load(strcat(names(ii).folder,'/',names(ii).name));

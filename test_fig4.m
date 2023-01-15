@@ -1,14 +1,15 @@
 % Script to plot Figure 4
 % BY Yangkang Chen
 % Jan, 2023
-% This script takes about 5-10 minutes
+% This script takes about 30 minutes
 %
 % Dependency MATdrr
-% svn co https://github.com/chenyk1990/MATdrr/trunk ./MATdrr 
-% or git clone https://github.com/chenyk1990/MATdrr 
+% svn co https://github.com/chenyk1990/MATdrr/trunk ./MATdrr
+% or git clone https://github.com/chenyk1990/MATdrr
 
 clc;clear;close all;
 addpath(genpath('./MATdrr'));
+addpath(genpath('./'));
 
 
 %Mag=[2.46,1.56,0.39]
@@ -17,24 +18,100 @@ ieq=[13,19,14]
 t=[0:14999]*1/250;
 x=1:800;
 
-names=dir('*.mat');
+names=dir('raw/*.mat');
 
-%% load data
-ii=ieq(1);
-name1=names(ii).name;
-load(name1);eq1=data;
-load(sprintf('processed/eq%d.mat',ii));dmrr1=datatt;
+%% first
+for ii=ieq(1):ieq(1)
+    load(strcat(names(ii).folder,'/',names(ii).name));
 
-ii=ieq(2);
-name2=names(ii).name;
-load(name2);eq2=data;
-load(sprintf('processed/eq%d.mat',ii));dmrr2=datatt;
+    if ii==12
+        data(find(isnan(data)))=0;
+    end
 
-ii=ieq(3);
-name3=names(ii).name;
-load(name3);eq3=data;
-load(sprintf('processed/eq%d.mat',ii));dmrr3=datatt;
+    if ii==13
+        data(:,7200:7221)=0;
+        data(:,7150:7271)=das_mf(data(:,7150:7271),40,1,2);
+        data(:,7150:7271)=das_meanf(data(:,7150:7271),40,1,2);
+    end
 
+    eq=data;
+    d_bp=yc_bandpass(eq',1/250,0,20)';
+    d_bpmf=yc_mf(d_bp,5,1,1);
+    %% LDRR
+    n1win=1024;n2win=800;n3win=1;
+    n1win=512;n2win=200;n3win=1;
+    r1=0.5;r2=0.5;r3=0.5;
+    d_bpmfmrr=drr3d_win(d_bpmf',0,50,1/250,2,4,0,n1win,n2win,n3win,r1,r2,r3)';
+
+    save(sprintf('processed/eq%d.mat',ii),'d_bp','d_bpmf','d_bpmfmrr');
+
+    fprintf('event %d/%d is done\n',ii,length(names));
+    %     close gcf;
+end
+name1=names(ieq(1)).name;
+eq1=eq;
+dmrr1=d_bpmfmrr;
+
+%% second
+for ii=ieq(2):ieq(2)
+    load(strcat(names(ii).folder,'/',names(ii).name));
+
+    if ii==12
+        data(find(isnan(data)))=0;
+    end
+    if ii==13
+        data(:,7200:7221)=0;
+        data(:,7150:7271)=das_mf(data(:,7150:7271),40,1,2);
+        data(:,7150:7271)=das_meanf(data(:,7150:7271),40,1,2);
+    end
+
+    eq=data;
+    d_bp=yc_bandpass(eq',1/250,0,20)';
+    d_bpmf=yc_mf(d_bp,5,1,1);
+    %% LDRR
+    n1win=1024;n2win=800;n3win=1;
+    n1win=512;n2win=200;n3win=1;
+    r1=0.5;r2=0.5;r3=0.5;
+    d_bpmfmrr=drr3d_win(d_bpmf',0,50,1/250,2,4,0,n1win,n2win,n3win,r1,r2,r3)';
+
+    save(sprintf('processed/eq%d.mat',ii),'d_bp','d_bpmf','d_bpmfmrr');
+
+    fprintf('event %d/%d is done\n',ii,length(names));
+    %     close gcf;
+end
+name2=names(ieq(2)).name;
+eq2=eq;
+dmrr2=d_bpmfmrr;
+
+%% third
+for ii=ieq(3):ieq(3)
+    load(strcat(names(ii).folder,'/',names(ii).name));
+    if ii==12
+        data(find(isnan(data)))=0;
+    end
+    if ii==13
+        data(:,7200:7221)=0;
+        data(:,7150:7271)=das_mf(data(:,7150:7271),40,1,2);
+        data(:,7150:7271)=das_meanf(data(:,7150:7271),40,1,2);
+    end
+
+    eq=data;
+    d_bp=yc_bandpass(eq',1/250,0,20)';
+    d_bpmf=yc_mf(d_bp,5,1,1);
+    %% LDRR
+    n1win=1024;n2win=800;n3win=1;
+    n1win=512;n2win=200;n3win=1;
+    r1=0.5;r2=0.5;r3=0.5;
+    d_bpmfmrr=drr3d_win(d_bpmf',0,50,1/250,2,4,0,n1win,n2win,n3win,r1,r2,r3)';
+
+    save(sprintf('processed/eq%d.mat',ii),'d_bp','d_bpmf','d_bpmfmrr');
+
+    fprintf('event %d/%d is done\n',ii,length(names));
+    %     close gcf;
+end
+name3=names(ieq(3)).name;
+eq3=eq;
+dmrr3=d_bpmfmrr;
 
 
 %%Cmax
@@ -46,14 +123,14 @@ Param.h=[0:800-1];
 Param.dt=1/250.0;
 Param.type=1;
 Param.oper=-1;
-craw1=yc_coh(eq1',Param);
-cmrr1=yc_coh(dmrr1',Param);
+craw1=das_coh(eq1',Param);
+cmrr1=das_coh(dmrr1',Param);
 
-craw2=yc_coh(eq2',Param);
-cmrr2=yc_coh(dmrr2',Param);
+craw2=das_coh(eq2',Param);
+cmrr2=das_coh(dmrr2',Param);
 
-craw3=yc_coh(eq3',Param);
-cmrr3=yc_coh(dmrr3',Param);
+craw3=das_coh(eq3',Param);
+cmrr3=das_coh(dmrr3',Param);
 
 
 figure('units','normalized','Position',[0.2 0.4 0.8, 1],'color','w');
