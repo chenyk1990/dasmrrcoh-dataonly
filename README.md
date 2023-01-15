@@ -69,9 +69,11 @@ Using the latest version
 
 3. The scripts beginning with "test_" are runnable scripts.
 
+4. The script [test_processall.m](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/test_processall.m) is the script that generates all the results in the folders processed and figresults.
+
 4. The directory subroutines stores all the required subroutines. 
 
-5. The directory fig_processed stores all the results from the proposed denoising workflow.
+5. The directory figresults stores all the results from the proposed denoising workflow.
 
 6. The directory raw stores all the segmented multi-channel DAS seismic data at the SAFOD site. 
 
