@@ -23,6 +23,7 @@ names=dir('raw/*.mat');
 %% first
 for ii=ieq(1):ieq(1)
     load(strcat(names(ii).folder,'/',names(ii).name));
+    eq1=data;
 
     if ii==12
         data(find(isnan(data)))=0;
@@ -35,8 +36,8 @@ for ii=ieq(1):ieq(1)
     end
 
     eq=data;
-    d_bp=yc_bandpass(eq',1/250,0,20)';
-    d_bpmf=yc_mf(d_bp,5,1,1);
+    d_bp=das_bandpass(eq',1/250,0,20)';
+    d_bpmf=das_mf(d_bp,5,1,1);
     %% LDRR
     n1win=1024;n2win=800;n3win=1;
     n1win=512;n2win=200;n3win=1;
@@ -49,12 +50,12 @@ for ii=ieq(1):ieq(1)
     %     close gcf;
 end
 name1=names(ieq(1)).name;
-eq1=eq;
 dmrr1=d_bpmfmrr;
 
 %% second
 for ii=ieq(2):ieq(2)
     load(strcat(names(ii).folder,'/',names(ii).name));
+    eq2=data;
 
     if ii==12
         data(find(isnan(data)))=0;
@@ -66,8 +67,8 @@ for ii=ieq(2):ieq(2)
     end
 
     eq=data;
-    d_bp=yc_bandpass(eq',1/250,0,20)';
-    d_bpmf=yc_mf(d_bp,5,1,1);
+    d_bp=das_bandpass(eq',1/250,0,20)';
+    d_bpmf=das_mf(d_bp,5,1,1);
     %% LDRR
     n1win=1024;n2win=800;n3win=1;
     n1win=512;n2win=200;n3win=1;
@@ -80,12 +81,13 @@ for ii=ieq(2):ieq(2)
     %     close gcf;
 end
 name2=names(ieq(2)).name;
-eq2=eq;
 dmrr2=d_bpmfmrr;
 
 %% third
 for ii=ieq(3):ieq(3)
     load(strcat(names(ii).folder,'/',names(ii).name));
+    eq3=data;
+
     if ii==12
         data(find(isnan(data)))=0;
     end
@@ -94,10 +96,9 @@ for ii=ieq(3):ieq(3)
         data(:,7150:7271)=das_mf(data(:,7150:7271),40,1,2);
         data(:,7150:7271)=das_meanf(data(:,7150:7271),40,1,2);
     end
-
     eq=data;
-    d_bp=yc_bandpass(eq',1/250,0,20)';
-    d_bpmf=yc_mf(d_bp,5,1,1);
+    d_bp=das_bandpass(eq',1/250,0,20)';
+    d_bpmf=das_mf(d_bp,5,1,1);
     %% LDRR
     n1win=1024;n2win=800;n3win=1;
     n1win=512;n2win=200;n3win=1;
@@ -110,7 +111,6 @@ for ii=ieq(3):ieq(3)
     %     close gcf;
 end
 name3=names(ieq(3)).name;
-eq3=eq;
 dmrr3=d_bpmfmrr;
 
 
@@ -135,7 +135,7 @@ cmrr3=das_coh(dmrr3',Param);
 
 figure('units','normalized','Position',[0.2 0.4 0.8, 1],'color','w');
 ax1=subplot(3,2,1);
-yc_imagesc(eq1,95,1,t,x);colormap(ax1,seis);
+das_imagesc(eq1,95,1,t,x);colormap(ax1,seis);
 title(name1,'Interpreter', 'none','Fontsize',14,'fontweight','bold');
 % xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 ylabel('Channel','Fontsize',14,'fontweight','bold');
@@ -144,7 +144,7 @@ text(-5,-100,'a)','color','k','Fontsize',18,'fontweight','bold','HorizontalAlign
 
 
 ax2=subplot(3,2,2);
-yc_imagesc(dmrr1,95,1,t,x);colormap(ax2,seis);
+das_imagesc(dmrr1,95,1,t,x);colormap(ax2,seis);
 title(strcat('Denoised (Cmax:'," ",num2str(max(abs(craw1(:)))),'->',num2str(max(abs(cmrr1(:)))),')'),'Fontsize',14,'fontweight','bold');
 % xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 % ylabel('Channel','Fontsize',14,'fontweight','bold');
@@ -152,7 +152,7 @@ set(gca,'Linewidth',2,'Fontsize',14,'Fontweight','bold');
 text(-5,-100,'b)','color','k','Fontsize',18,'fontweight','bold','HorizontalAlignment','center');
 
 ax1=subplot(3,2,3);
-yc_imagesc(eq2,95,1,t,x);colormap(ax1,seis);
+das_imagesc(eq2,95,1,t,x);colormap(ax1,seis);
 title(name2,'Interpreter', 'none','Fontsize',14,'fontweight','bold');
 % xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 ylabel('Channel','Fontsize',14,'fontweight','bold');
@@ -161,7 +161,7 @@ text(-5,-100,'c)','color','k','Fontsize',18,'fontweight','bold','HorizontalAlign
 
 
 ax2=subplot(3,2,4);
-yc_imagesc(dmrr2,95,1,t,x);colormap(ax2,seis);
+das_imagesc(dmrr2,95,1,t,x);colormap(ax2,seis);
 title(strcat('Denoised (Cmax:'," ",num2str(max(abs(craw2(:)))),'->',num2str(max(abs(cmrr2(:)))),')'),'Fontsize',14,'fontweight','bold');
 % xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 % ylabel('Channel','Fontsize',14,'fontweight','bold');
@@ -169,7 +169,7 @@ set(gca,'Linewidth',2,'Fontsize',14,'Fontweight','bold');
 text(-5,-100,'d)','color','k','Fontsize',18,'fontweight','bold','HorizontalAlignment','center');
 
 ax1=subplot(3,2,5);
-yc_imagesc(eq3,95,1,t,x);colormap(ax1,seis);
+das_imagesc(eq3,95,1,t,x);colormap(ax1,seis);
 title(name3,'Interpreter', 'none','Fontsize',14,'fontweight','bold');
 xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 ylabel('Channel','Fontsize',14,'fontweight','bold');
@@ -178,7 +178,7 @@ text(-5,-100,'e)','color','k','Fontsize',18,'fontweight','bold','HorizontalAlign
 
 
 ax2=subplot(3,2,6);
-yc_imagesc(dmrr3,95,1,t,x);colormap(ax2,seis);
+das_imagesc(dmrr3,95,1,t,x);colormap(ax2,seis);
 title(strcat('Denoised (Cmax:'," ",num2str(max(abs(craw3(:)))),'->',num2str(max(abs(cmrr3(:)))),')'),'Fontsize',14,'fontweight','bold');
 xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 % ylabel('Channel','Fontsize',14,'fontweight','bold');

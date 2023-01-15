@@ -34,8 +34,8 @@ for ii=ieq:ieq
         data(find(isnan(data)))=0;
     end
     eq=data;
-    d_bp=yc_bandpass(eq',1/250,0,20)';
-    d_bpmf=yc_mf(d_bp,5,1,1);
+    d_bp=das_bandpass(eq',1/250,0,20)';
+    d_bpmf=das_mf(d_bp,5,1,1);
     %% LDRR
     n1win=1024;n2win=800;n3win=1;
     n1win=512;n2win=200;n3win=1;
@@ -52,17 +52,17 @@ end
 %% waveform
 % figure('units','normalized','Position',[0.2 0.4 0.8, 1],'color','w');
 % subplot(4,2,1);
-% yc_imagesc(eq,95,1,t,x);title(name,'Interpreter', 'none');
+% das_imagesc(eq,95,1,t,x);title(name,'Interpreter', 'none');
 % subplot(4,2,2);
-% yc_imagesc(d_bp,95,1,t,x);title('BP');
+% das_imagesc(d_bp,95,1,t,x);title('BP');
 % subplot(4,2,3);
-% yc_imagesc(d_bpmf,95,1,t,x);title('MF (5)');%xlim([7.5,8.5]);
+% das_imagesc(d_bpmf,95,1,t,x);title('MF (5)');%xlim([7.5,8.5]);
 % subplot(4,2,5);
-% yc_imagesc(d_bpmf,95,1,t,x);title('MF (5)');xlim([0,30]);ylim([0,200]);
+% das_imagesc(d_bpmf,95,1,t,x);title('MF (5)');xlim([0,30]);ylim([0,200]);
 % subplot(4,2,4);
-% yc_imagesc(d_bpmfmrr,95,1,t,x);title('LDRR');
+% das_imagesc(d_bpmfmrr,95,1,t,x);title('LDRR');
 % subplot(4,2,6);
-% yc_imagesc(d_bpmfmrr,95,1,t,x);title('LDRR');xlim([0,30]);ylim([0,200]);
+% das_imagesc(d_bpmfmrr,95,1,t,x);title('LDRR');xlim([0,30]);ylim([0,200]);
 
 %% coherency
 % d_bp=data';
@@ -88,7 +88,7 @@ c_bpmfmrr=das_coh(d_bpmfmrr',Param);
 
 figure('units','normalized','Position',[0.2 0.4 0.7, 1],'color','w');
 ax1=subplot(4,2,1);
-yc_imagesc(eq,95,1,t,x);colormap(ax1,seis);
+das_imagesc(eq,95,1,t,x);colormap(ax1,seis);
 title(name,'Interpreter', 'none','Fontsize',14,'fontweight','bold');
 % xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 ylabel('Channel','Fontsize',14,'fontweight','bold');
@@ -97,7 +97,7 @@ text(-5,-100,'a)','color','k','Fontsize',18,'fontweight','bold','HorizontalAlign
 
 
 ax2=subplot(4,2,2);
-yc_imagesc(d_bp,95,1,t,x);colormap(ax2,seis);
+das_imagesc(d_bp,95,1,t,x);colormap(ax2,seis);
 title('BP','Fontsize',14,'fontweight','bold');
 % xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 % ylabel('Channel','Fontsize',14,'fontweight','bold');
@@ -105,7 +105,7 @@ set(gca,'Linewidth',2,'Fontsize',14,'Fontweight','bold');
 text(-5,-100,'b)','color','k','Fontsize',18,'fontweight','bold','HorizontalAlignment','center');
 
 ax3=subplot(4,2,3);
-yc_imagesc(d_bpmf,95,1,t,x);colormap(ax3,seis);title('BP+MF');
+das_imagesc(d_bpmf,95,1,t,x);colormap(ax3,seis);title('BP+MF');
 title('BP+MF','Fontsize',14,'fontweight','bold');
 % xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 ylabel('Channel','Fontsize',14,'fontweight','bold');
@@ -113,7 +113,7 @@ set(gca,'Linewidth',2,'Fontsize',14,'Fontweight','bold');
 text(-5,-100,'c)','color','k','Fontsize',18,'fontweight','bold','HorizontalAlignment','center');
 
 ax4=subplot(4,2,4);
-yc_imagesc(d_bpmfmrr,95,1,t,x);colormap(ax4,seis);title('BP+MF+MRR');
+das_imagesc(d_bpmfmrr,95,1,t,x);colormap(ax4,seis);title('BP+MF+MRR');
 title('BP+MF+MRR','Fontsize',14,'fontweight','bold');
 % xlabel('Time (s)','Fontsize',14,'fontweight','bold');
 % ylabel('Channel','Fontsize',14,'fontweight','bold');
