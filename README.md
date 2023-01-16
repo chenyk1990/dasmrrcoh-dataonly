@@ -37,8 +37,8 @@ BibTeX:
 ## Install
 Using the latest version
 
-    git clone https://github.com/chenyk1990/dasmrrcoh
-    cd dasmrrcoh
+    git clone https://github.com/chenyk1990/dasmrrcoh-dataonly
+    cd dasmrrcoh-dataonly
     addpath(genpath('./')); #in Matlab command line
     
 -----------
