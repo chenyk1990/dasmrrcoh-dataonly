@@ -95,7 +95,7 @@ Using the latest version
 	
 	svn co https://github.com/chenyk1990/dasmrrcoh-dataonly/trunk/raw dasmrrcoh/raw
 	
-	Then, run the scripts in asmrrcoh. 
+	Then, run the scripts in dasmrrcoh. 
 
 
 -----------
