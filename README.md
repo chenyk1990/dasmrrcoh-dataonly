@@ -71,28 +71,31 @@ Using the latest version
 
 4. The script [test_processall.m](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/test_processall.m) is the script that generates all the results in the folders processed and figresults.
 
-4. The directory [subroutines](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/subroutines) stores all the required subroutines. 
+5. The directory [subroutines](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/subroutines) stores all the required subroutines. 
 
-5. The directory [figresults](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/figresults) stores all the results from the proposed denoising workflow.
+6. The directory [figresults](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/figresults) stores all the results from the proposed denoising workflow.
 
-6. The directory [raw](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/raw) stores all the segmented multi-channel DAS seismic data at the SAFOD site. 
+7. The directory [raw](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/raw) stores all the segmented multi-channel DAS seismic data at the SAFOD site. 
 
-7. The directory [processed](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/processed) stores all the denoised DAS data. 
+9. The directory [processed](https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/processed) stores all the denoised DAS data. 
 
-8. The current version is based on Matlab. Future versions will also support Python and be optimized regarding computational efficiency. 
+9. The current version is based on Matlab. Future versions will also support Python and be optimized regarding computational efficiency. 
 
-9. All datasets used in these DEMO scripts or produced from massive processing based on this package are in a separate repository https://github.com/chenyk1990/dasmrrcoh-dataonly (for easier downloading). 
+10. All datasets used in these DEMO scripts or produced from massive processing based on this package are in a separate repository https://github.com/chenyk1990/dasmrrcoh-dataonly (for easier downloading). 
 
-10. The difference between the two "similar repositories" [dasmrrcoh](https://github.com/chenyk1990/dasmrrcoh) and [dasmrrcoh-dataonly](https://github.com/chenyk1990/dasmrrcoh-dataonly) is that the latter is only used for storing the data (several GBs) and the former is only used for storing the scripts (less than 1 MB). 
+11. The difference between the two "similar repositories" [dasmrrcoh](https://github.com/chenyk1990/dasmrrcoh) and [dasmrrcoh-dataonly](https://github.com/chenyk1990/dasmrrcoh-dataonly) is that the latter is only used for storing the data (several GBs) and the former is only used for storing the scripts (less than 1 MB). 
 
-11. All figures (except for fig1, which is a schematic plot) in the DASmrrcoh paper are in the following directory for a quick look (https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/gallery/). 
+12. All figures (except for fig1, which is a schematic plot) in the DASmrrcoh paper are in the following directory for a quick look (https://github.com/chenyk1990/dasmrrcoh-dataonly/tree/main/gallery/). 
 
-12. The label fonts are different across different Matlab versions and platforms (Linux, Max). The figures presented in the paper are from Mac-Pro Matlab 2022b. 
+13. The label fonts are different across different Matlab versions and platforms (Linux, Max). The figures presented in the paper are from Mac-Pro Matlab 2022b. 
 
-13. If the package is too large for downloading, the following option can be used:
+14. If the package is too large for downloading, the following option can be used:
 	svn co https://github.com/chenyk1990/dasmrrcoh/trunk asmrrcoh
+	
 	svn co https://github.com/chenyk1990/dasmrrcoh-dataonly/trunk/raw asmrrcoh/raw
+	
 	Then, run the scripts in asmrrcoh. 
+
 
 -----------
 ## Gallery
