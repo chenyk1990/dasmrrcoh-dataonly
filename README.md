@@ -89,6 +89,11 @@ Using the latest version
 
 12. The label fonts are different across different Matlab versions and platforms (Linux, Max). The figures presented in the paper are from Mac-Pro Matlab 2022b. 
 
+13. If the package is too large for downloading, the following option can be used:
+	svn co https://github.com/chenyk1990/dasmrrcoh/trunk asmrrcoh
+	svn co https://github.com/chenyk1990/dasmrrcoh-dataonly/trunk/raw asmrrcoh/raw
+	Then, run the scripts in asmrrcoh. 
+
 -----------
 ## Gallery
 The gallery figures of the DASmrrcoh package can be found at
