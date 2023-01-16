@@ -91,9 +91,9 @@ Using the latest version
 
 14. If the package is too large for downloading, the following option can be used:
 
-	svn co https://github.com/chenyk1990/dasmrrcoh/trunk asmrrcoh
+	svn co https://github.com/chenyk1990/dasmrrcoh/trunk dasmrrcoh
 	
-	svn co https://github.com/chenyk1990/dasmrrcoh-dataonly/trunk/raw asmrrcoh/raw
+	svn co https://github.com/chenyk1990/dasmrrcoh-dataonly/trunk/raw dasmrrcoh/raw
 	
 	Then, run the scripts in asmrrcoh. 
 
