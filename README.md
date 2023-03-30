@@ -47,7 +47,7 @@ Using the latest version
  
 -----------
 ## Dependence Packages
-* MATdrr (https://github.com/chenyk1990/MATdrr)
+* MATdrr (https://github.com/aaspip/MATdrr)
     
 -----------
 ## Development
@@ -63,7 +63,7 @@ Using the latest version
 -----------
 ## NOTES:
  
-1. To run the reproducible scripts (test_xxxx.m), please first download the required package from: https://github.com/chenyk1990/MATdrr. 
+1. To run the reproducible scripts (test_xxxx.m), please first download the required package from: https://github.com/aaspip/MATdrr. 
 
 2. Please put the MATdrr package in the main directory and add its sub-directories to the Matlab toolbox path. 
 
