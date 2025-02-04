@@ -97,6 +97,8 @@ Using the latest version
 	
 	Then, run the scripts in dasmrrcoh. 
 
+15. The zip format of "https://github.com/chenyk1990/dasmrrcoh-dataonly" (containing all benchmark data) up to  02/04/2025 can be downloaded from https://utexas.box.com/s/4fq27rpcricwd2k97rpo976zoln8k2x5 . 
+
 
 -----------
 ## Gallery
